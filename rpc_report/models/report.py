@@ -32,7 +32,7 @@ class RPCReport(models.Model):
     def render_rpc(self, res_ids, data):
         self._force_session_store()
         res = self.render(res_ids, data)
-        if isinstance(res, tuple):
+        if isinstance(res, tuple): #Case of xmlrpc
             return base64.b64encode(res[0]), res[1]
-        else:
+        else: #Case of jsonrpc
             return base64.b64encode(res)
