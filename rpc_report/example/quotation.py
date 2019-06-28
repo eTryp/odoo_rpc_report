@@ -14,8 +14,9 @@ _, sale_order_id = model_data.get_object_reference('sale', 'sale_order_7')
 report = connection.get_model(report_model)
 res = report.render_rpc(report_id, sale_order_id, False)
 
-
-
+#Fast way
+#report = connection.get_model("ir.actions.report")
+#res = report.render_rpc(198, 5, False)
 
 outfile = open('sale.pdf', 'wb')
 outfile.write(base64.b64decode(res[0]))
